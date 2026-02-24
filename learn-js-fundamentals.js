@@ -33,3 +33,14 @@ console.log(arr2);
 const obj1 = {a:1,b:2};
 const obj2 = {...obj1, c:3};
 console.log(obj2);
+
+
+// promises and async/await api calls
+
+const fetchData = async () => { 
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+    const data = await response.json();
+    return data;
+}
+
+console.log(fetchData());
