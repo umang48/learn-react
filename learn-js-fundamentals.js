@@ -16,3 +16,11 @@ console.log(evennumbers);
 
 const largerthanthree = numbers.find(num => num > 3);
 console.log(largerthanthree);
+
+
+// object destructuring
+
+const user = {name:"Umang", age:32, city:"Unjha"};
+const {name, age, city} = user;
+console.log(age)
+
