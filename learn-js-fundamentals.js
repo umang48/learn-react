@@ -44,3 +44,9 @@ const fetchData = async () => {
 }
 
 console.log(fetchData());
+
+// template literals
+
+const myName = "Umang";
+const myGreet = `Hello, my names is ${myName}`;
+console.log(myGreet);
