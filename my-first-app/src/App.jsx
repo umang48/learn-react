@@ -1,6 +1,7 @@
 import './App.css'
 import Greeting from './components/Greeting';
 import Usercard from './components/Usercard'; 
+import Counter from './components/Counter';
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Greeting />
       <Usercard name="Umang Prajapati" age={30} city="Ahmedabad" />
+      <Counter />
     </>
   )
 }
