@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter, Link } from 'rea
 import Home from './pages/Home';
 import About from './pages/About';
 import Users from './pages/Users';
+import UserDetail from './pages/UserDetail';
+import NotFound from './pages/NotFound';
 function App() {
 
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<UserDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
