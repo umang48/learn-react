@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
+import api from "../api"; // Import the configured Axios instance
 function Users () {
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users") 
-            .then(response => response.json())
-            .then(data => setUsers(data))
-            .catch(error => console.error("Error fetching users:", error));
+        fetchUsers();
     }, []);
+
+    const fetchUsers = async () => {
+        try {
+            const response = await api.get("/users");
+            setUsers(response.data);
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    };
+
     return (
         <div>
             <h1 className="text-3xl font-bold text-gray-800 mb-6">Users</h1>

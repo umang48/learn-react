@@ -1,20 +1,28 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import api from "../api"; // Import the configured Axios instance
 function UserDetail() {
 const { id } = useParams();
 const [user, setUser] = useState(null);
 const [posts, setPosts] = useState([]);
 useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-        .then(response => response.json())
-        .then(data => setUser(data))
-        .catch(error => console.error("Error fetching user details:", error));
-    
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
-        .then(response => response.json())
-        .then(data => setPosts(data))
-        .catch(error => console.error("Error fetching user posts:", error));
+    fetchData();
 }, [id]);
+
+const fetchData = async () => {
+try {
+const [userResponse, postsResponse] = await Promise.all([
+api.get(`/users/${id}`),
+api.get(`/posts?userId=${id}`)
+]);
+setUser(userResponse.data);
+setPosts(postsResponse.data);
+}
+catch (error) {
+console.error("Error fetching user details:", error);
+}
+}
+
 if (!user) {
     return <div>Loading...</div>;
 }
