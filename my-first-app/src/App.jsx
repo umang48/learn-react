@@ -14,17 +14,27 @@ function App() {
 
   return (
     <>
+      { /* 
       <Greeting />
       <Usercard name="Umang Prajapati" age={30} city="Ahmedabad" />
       <Counter />
       <HandlingForms/>
       <LiveSearch />
+      */}
       <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link> |
-        <Link to="/about">About</Link> |
-        <Link to="/users">Users</Link>
+      <nav className='bg-blue-600 px-6 py-4 flex gap-6 shadow-md'>
+        <Link to="/" className={({ isActive }) =>
+            isActive ? "text-yellow-300 font-semibold" : "text-white hover:text-yellow-200"
+          }>Home</Link> |
+        <Link to="/about" className={({ isActive }) =>
+            isActive ? "text-yellow-300 font-semibold" : "text-white hover:text-yellow-200"
+          }>About</Link> |
+        <Link to="/users" className={({ isActive }) =>
+            isActive ? "text-yellow-300 font-semibold" : "text-white hover:text-yellow-200"
+          }>Users</Link>
       </nav>
+      <div className='max-w-4xl mx-auto px-6 py-8'>
+          
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -32,6 +42,7 @@ function App() {
           <Route path="/users/:id" element={<UserDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </div>
       </BrowserRouter>
     </>
   )

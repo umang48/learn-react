@@ -10,16 +10,18 @@ function Users () {
     }, []);
     return (
         <div>
-            <h1>Users</h1>
-            <ul>
+            <h1 className="text-3xl font-bold text-gray-800 mb-6">Users</h1>
+            <div className="grid grid-cols-1 gap-4">
                 {users.map(user => (
-                    <li key={user.id}>
-                        <Link to={`/users/${user.id}`}>
-                        {user.name} - {user.email}
+                    <Link to={`/users/${user.id}`} key={user.id}>
+                         <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md hover:border-blue-400 transition">
+                        <h2 className="text-lg font-semibold text-gray-800">{user.name}</h2>
+                        <p className="text-gray-500 text-sm">📧 {user.email}</p>
+                        <p className="text-gray-500 text-sm">🌐 {user.website}</p>
+                        </div>
                     </Link>
-                    </li>
                 ))}
-            </ul>
+            </div>
         </div>    
     );
 }
